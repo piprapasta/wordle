@@ -3,7 +3,6 @@ let wordList = ['ambur', 'kalad', 'aasta', 'ainus', 'aitäh', 'ajama', 'alarm', 
 ];
 let randomIndex = Math.floor(Math.random() * wordList.length)
 let secret = wordList[randomIndex]
-
 let currentAttempt = ''
 let history = []
 
@@ -34,7 +33,11 @@ function handleKeyDown(e) {
     }
     updateGrid()
 }
+
 function buildGrid() {
+    if (!hasOneDayPassed()) {
+        return false;
+    }
     for (let i = 0; i < 6; i++) {
         let row = document.createElement('div')
         for (let j = 0; j < 5; j++) {
@@ -61,7 +64,6 @@ function drawAttempt(row, attempt, isCurrent) {
         if (attempt[i] !== undefined) {
             cell.textContent = attempt[i]
         } else {
-            // lol
             cell.innerHTML = '<div style="opacity: 0">X</div>'
         }
         if (isCurrent) {
@@ -84,3 +86,12 @@ function getBgColor(attempt, i) {
     return '#b59f3b'
 }
 
+function hasOneDayPassed() {
+let date = new Date().toLocaleDateString();
+if (localStorage.getItem('date') != null || localStorage.getItem('date') === date) {
+    alert(localStorage.getItem('date'))
+    return false;
+}
+localStorage.setItem('date', date);
+return true;
+}
