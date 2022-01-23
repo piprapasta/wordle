@@ -36,14 +36,14 @@ function handleKeyDown(e) {
 
 function buildGrid() {
     if (!hasOneDayPassed()) {
-        alert(localStorage.getItem('date'))
-        let proceed = confirm("Are you sure you want to proceed?")
+        let proceed = confirm("Sa ju tegid täna ühe, mine loe raamatut?")
         if (!proceed) {
             return false;
         }
     }
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        focus()
+        alert("yay sa oled telefonis")
+        prompt()
     }
     for (let i = 0; i < 6; i++) {
         let row = document.createElement('div')
