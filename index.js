@@ -10,17 +10,15 @@ let grid = document.getElementById("grid")
 
 buildGrid()
 updateGrid()
-if (!hasOneDayPassed()) {
-    let proceed = confirm("Sa ju tegid täna ühe, mine loe raamatut?")
-    if (proceed) {
-        window.addEventListener('click', handleClick)
-    }
-}
+// if (!hasOneDayPassed()) {
+    // alert("Sa ju tegid täna ühe, mine loe raamatut?")
+// }
 
-
-
-function handleClick(clickedLetter) {
+function handleKeyboard(clickedLetter) {
     let letter = clickedLetter.toLowerCase()
+    if (!hasOneDayPassed()) {
+        return;
+    }
     if (letter === 'enter') {
         if (currentAttempt.length < 5) {
             return
