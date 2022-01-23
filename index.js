@@ -36,7 +36,10 @@ function handleKeyDown(e) {
 
 function buildGrid() {
     if (!hasOneDayPassed()) {
-        return false;
+        let proceed = confirm("Are you sure you want to proceed?")
+        if (!proceed) {
+            return false;
+        }
     }
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         focus()
