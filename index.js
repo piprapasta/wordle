@@ -10,10 +10,17 @@ let grid = document.getElementById("grid")
 
 buildGrid()
 updateGrid()
-window.addEventListener('keydown', handleKeyDown)
+if (!hasOneDayPassed()) {
+    let proceed = confirm("Sa ju tegid täna ühe, mine loe raamatut?")
+    if (proceed) {
+        window.addEventListener('click', handleClick)
+    }
+}
 
-function handleKeyDown(e) {
-    let letter = e.key.toLowerCase()
+
+
+function handleClick(clickedLetter) {
+    let letter = clickedLetter.toLowerCase()
     if (letter === 'enter') {
         if (currentAttempt.length < 5) {
             return
@@ -24,7 +31,7 @@ function handleKeyDown(e) {
         }
         history.push(currentAttempt)
         currentAttempt = ''
-    } else if (letter === 'backspace') {
+    } else if (letter === 'del') {
         currentAttempt = currentAttempt.slice(0, currentAttempt.length - 1)
     } else if (letter.length === 1) {
         if (currentAttempt.length < 5) {
@@ -35,16 +42,6 @@ function handleKeyDown(e) {
 }
 
 function buildGrid() {
-    if (!hasOneDayPassed()) {
-        let proceed = confirm("Sa ju tegid täna ühe, mine loe raamatut?")
-        if (!proceed) {
-            return false;
-        }
-    }
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        alert("yay sa oled telefonis")
-        prompt()
-    }
     for (let i = 0; i < 6; i++) {
         let row = document.createElement('div')
         for (let j = 0; j < 5; j++) {

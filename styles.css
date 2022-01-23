@@ -20,3 +20,25 @@ body {
     font-weight: bold;
     color: lightgray;
 }
+button {
+    width: 32px;
+    height: 35px;
+    border: 0.1em solid grey;
+    text-align: center;
+    border-radius: 5px;
+    background: grey;
+    color: white;
+}
+
+button.delete {
+    width: 55px;
+}
+button.enter {
+    width: 55px;
+}
+table {
+    margin: auto;
+}
+tr {
+    margin: auto;
+}
