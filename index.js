@@ -36,6 +36,7 @@ function handleKeyDown(e) {
 
 function buildGrid() {
     if (!hasOneDayPassed()) {
+        alert(localStorage.getItem('date'))
         let proceed = confirm("Are you sure you want to proceed?")
         if (!proceed) {
             return false;
@@ -95,7 +96,6 @@ function getBgColor(attempt, i) {
 function hasOneDayPassed() {
 let date = new Date().toLocaleDateString();
 if (localStorage.getItem('date') != null || localStorage.getItem('date') === date) {
-    alert(localStorage.getItem('date'))
     return false;
 }
 localStorage.setItem('date', date);
