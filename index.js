@@ -38,6 +38,9 @@ function buildGrid() {
     if (!hasOneDayPassed()) {
         return false;
     }
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        focus()
+    }
     for (let i = 0; i < 6; i++) {
         let row = document.createElement('div')
         for (let j = 0; j < 5; j++) {
