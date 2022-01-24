@@ -13,13 +13,9 @@ updateGrid()
 // if (!hasOneDayPassed()) {
     // alert("Sa ju tegid täna ühe, mine loe raamatut?")
 // }
-window.addEventListener("click", handleKeyboard)
 
 function handleKeyboard(clickedLetter) {
     let letter = clickedLetter.toLowerCase()
-    if (!hasOneDayPassed()) {
-        return;
-    }
     if (letter === 'enter') {
         if (currentAttempt.length < 5) {
             return
