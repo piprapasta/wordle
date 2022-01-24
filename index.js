@@ -7,6 +7,7 @@ let currentAttempt = ''
 let history = []
 
 let grid = document.getElementById("grid")
+let gameOver = false
 
 buildGrid()
 updateGrid()
@@ -15,7 +16,12 @@ updateGrid()
 // }
 
 function handleKeyboard(clickedLetter) {
+    alert(secret)
+    if (gameOver === true) {
+        return;
+    }
     let letter = clickedLetter.toLowerCase()
+
     if (letter === 'enter') {
         if (currentAttempt.length < 5) {
             return
@@ -25,6 +31,9 @@ function handleKeyboard(clickedLetter) {
             return
         }
         history.push(currentAttempt)
+        if (currentAttempt === secret) {
+            gameOver = true
+        }
         currentAttempt = ''
     } else if (letter === 'del') {
         currentAttempt = currentAttempt.slice(0, currentAttempt.length - 1)
