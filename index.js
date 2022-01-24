@@ -13,6 +13,7 @@ updateGrid()
 // if (!hasOneDayPassed()) {
     // alert("Sa ju tegid täna ühe, mine loe raamatut?")
 // }
+window.addEventListener("click", handleKeyboard)
 
 function handleKeyboard(clickedLetter) {
     let letter = clickedLetter.toLowerCase()
