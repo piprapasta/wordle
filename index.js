@@ -11,12 +11,11 @@ let gameOver = false
 
 buildGrid()
 updateGrid()
-// if (!hasOneDayPassed()) {
-    // alert("Sa ju tegid täna ühe, mine loe raamatut?")
-// }
+if (!hasOneDayPassed()) {
+    alert("Sa ju tegid täna ühe, mine loe raamatut?")
+}
 
 function handleKeyboard(clickedLetter) {
-    alert(secret)
     if (gameOver === true) {
         return;
     }
@@ -96,9 +95,9 @@ function getBgColor(attempt, i) {
 
 function hasOneDayPassed() {
 let date = new Date().toLocaleDateString();
-if (localStorage.getItem('date') != null || localStorage.getItem('date') === date) {
-    return false;
+if (localStorage.getItem('date') == null || localStorage.getItem('date') !== date) {
+    localStorage.setItem('date', date);
+    return true;
 }
-localStorage.setItem('date', date);
-return true;
+return false;
 }
